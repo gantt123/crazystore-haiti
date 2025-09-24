@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy-Store | Services Gaming & Streaming</title>
+    <meta name="description" content="Rechargez vos comptes Gaming, Streaming et Boost avec Crazy-Store. Paiement sécurisé Moncash et Natcash.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Authentication Section -->
+    <section id="auth-section" class="auth-container">
+        <div class="auth-form">
+            <div class="logo-header">
+                <i class="fas fa-store"></i>
+                <h1>Crazy-Store</h1>
+            </div>
+            <h2>Connexion</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="Votre email">
+                    <div class="error-message" id="email-error">Veuillez entrer un email valide</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required placeholder="Votre mot de passe">
+                    <div class="error-message" id="password-error">Le mot de passe est requis</div>
+                </div>
+                <button type="submit" class="btn btn-block">Se connecter</button>
+            </form>
+            <div class="form-footer">
+                <p>Pas encore de compte? <a href="#" id="show-register">S'inscrire</a></p>
+            </div>
+        </div>
+
+        <div class="auth-form hidden" id="register-form">
+            <div class="logo-header">
+                <i class="fas fa-store"></i>
+                <h1>Crazy-Store</h1>
+            </div>
+            <h2>Créer un compte</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="fullname">Nom complet</label>
+                    <input type="text" id="fullname" required placeholder="Votre nom complet">
+                    <div class="error-message" id="fullname-error">Le nom complet est requis</div>
+                </div>
+                <div class="form-group">
+                    <label for="new-email">Email</label>
+                    <input type="email" id="new-email" required placeholder="Votre email">
+                    <div class="error-message" id="new-email-error">Veuillez entrer un email valide</div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" required placeholder="Votre numéro de téléphone">
+                    <div class="error-message" id="phone-error">Veuillez entrer un numéro de téléphone valide</div>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Mot de passe</label>
+                    <input type="password" id="new-password" required placeholder="Créez un mot de passe">
+                    <div class="error-message" id="new-password-error">Le mot de passe doit contenir au moins 6 caractères</div>
+                </div>
+                <button type="submit" class="btn btn-block">S'inscrire</button>
+            </form>
+            <div class="form-footer">
+                <p>Déjà inscrit? <a href="#" id="show-login">Se connecter</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Application -->
+    <div id="app" class="hidden">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                    <span>Crazy-Store</span>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Rechercher un service...">
+                </div>
+                
+                <div class="header-actions">
+                    <div class="cart-icon" data-page="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <button class="menu-btn">
+                            <span id="user-name">Mon compte</span> <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="menu-item" data-page="home">
+                                <i class="fas fa-home"></i> Accueil
+                            </div>
+                            <div class="menu-item" data-page="streaming">
+                                <i class="fas fa-tv"></i> Streaming
+                            </div>
+                            <div class="menu-item" data-page="gaming">
+                                <i class="fas fa-gamepad"></i> Gaming
+                            </div>
+                            <div class="menu-item" data-page="boost">
+                                <i class="fas fa-rocket"></i> Boost
+                            </div>
+                            <div class="menu-item" data-page="webdev">
+                                <i class="fas fa-code"></i> Sites Web
+                            </div>
+                            <div class="menu-item" data-page="cart">
+                                <i class="fas fa-shopping-cart"></i> Panier
+                            </div>
+                            <div class="menu-item" data-page="profile">
+                                <i class="fas fa-user"></i> Profil
+                            </div>
+                            <div class="menu-item" data-page="balance">
+                                <i class="fas fa-wallet"></i> Balance
+                            </div>
+                            <div class="menu-item creator-only hidden" data-page="creator">
+                                <i class="fas fa-crown"></i> Créator
+                            </div>
+                            <div class="menu-item" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container main-content">
+            <!-- Home Page -->
+            <section id="home-page">
+                <h2 class="section-title">Services Populaires</h2>
+                
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">Tous</button>
+                    <button class="filter-btn" data-category="streaming">Streaming</button>
+                    <button class="filter-btn" data-category="gaming">Gaming</button>
+                    <button class="filter-btn" data-category="boost">Boost</button>
+                    <button class="filter-btn" data-category="webdev">Sites Web</button>
+                </div>
+                
+                <div class="services-grid" id="services-container">
+                    <!-- Services dynamiques -->
+                </div>
+            </section>
+
+            <!-- Streaming Page -->
+            <section id="streaming-page" class="hidden">
+                <h2 class="section-title">Services Streaming</h2>
+                <div class="services-grid" id="streaming-container"></div>
+            </section>
+
+            <!-- Gaming Page -->
+            <section id="gaming-page" class="hidden">
+                <h2 class="section-title">Services Gaming</h2>
+                <div class="services-grid" id="gaming-container"></div>
+            </section>
+
+            <!-- Boost Package Page -->
+            <section id="boost-page" class="hidden">
+                <h2 class="section-title">Services Boost</h2>
+                <div class="services-grid" id="boost-container"></div>
+            </section>
+
+            <!-- Web Development Page -->
+            <section id="webdev-page" class="hidden">
+                <h2 class="section-title">Création de Sites Web</h2>
+                <div class="services-grid" id="webdev-container"></div>
+            </section>
+
+            <!-- Cart Page -->
+            <section id="cart-page" class="hidden">
+                <h2 class="section-title">Mon Panier</h2>
+                <div class="cart-items" id="cart-items-container"></div>
+                <div class="cart-total">Total: <span id="cart-total">0</span> HTG</div>
+                <button class="btn btn-block" id="checkout-btn">Procéder au paiement</button>
+            </section>
+
+            <!-- Profile Page -->
+            <section id="profile-page" class="hidden">
+                <h2 class="section-title">Mon Profil</h2>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                        <div class="profile-info">
+                            <h2 id="profile-name">Nom Utilisateur</h2>
+                            <p id="profile-email">email@exemple.com</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="orders-count">0</div>
+                            <div class="stat-label">Commandes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-spent">0 HTG</div>
+                            <div class="stat-label">Total Dépensé</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="member-since">2024</div>
+                            <div class="stat-label">Membre depuis</div>
+                        </div>
+                    </div>
+                    <h3>Informations Personnelles</h3>
+                    <div class="form-group">
+                        <label for="profile-phone">Téléphone</label>
+                        <input type="tel" id="profile-phone" placeholder="Votre numéro">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-address">Adresse</label>
+                        <input type="text" id="profile-address" placeholder="Votre adresse">
+                    </div>
+                    <button class="btn btn-block" id="save-profile-btn">Enregistrer</button>
+                </div>
+            </section>
+
+            <!-- Balance Page -->
+            <section id="balance-page" class="hidden">
+                <h2 class="section-title">Ma Balance</h2>
+                <div class="balance-card">
+                    <h3>Solde Actuel</h3>
+                    <div class="balance-amount" id="balance-amount">0 HTG</div>
+                    <button class="btn btn-block" id="recharge-btn">Recharger mon compte</button>
+                </div>
+                
+                <div class="recharge-options hidden" id="recharge-options">
+                    <div class="recharge-option" data-amount="100">100 HTG</div>
+                    <div class="recharge-option" data-amount="500">500 HTG</div>
+                    <div class="recharge-option" data-amount="1000">1000 HTG</div>
+                    <div class="recharge-option" data-amount="2000">2000 HTG</div>
+                    <div class="recharge-option" data-amount="5000">5000 HTG</div>
+                </div>
+                
+                <div class="hidden" id="payment-section">
+                    <h3>Méthodes de Paiement</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="moncash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>Moncash</div>
+                        </div>
+                        <div class="payment-method" data-method="natcash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>Natcash</div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-info" id="moncash-info" style="display: none;">
+                        <h4>💳 Paiement par Moncash</h4>
+                        <p><strong>📱 Numéro :</strong> +50939442808</p>
+                        <p><strong>👤 Nom :</strong> Bien Aimé Marcco</p>
+                        <p><strong>💵 Montant :</strong> <span id="moncash-amount">0</span> HTG</p>
+                    </div>
+                    
+                    <div class="payment-info" id="natcash-info" style="display: none;">
+                        <h4>💳 Paiement par Natcash</h4>
+                        <p><strong>📱 Numéro :</strong> +50935669814</p>
+                        <p><strong>👤 Nom :</strong> Pierre Louis Jinolyse</p>
+                        <p><strong>💵 Montant :</strong> <span id="natcash-amount">0</span> HTG</p>
+                    </div>
+                    
+                    <div class="payment-form hidden" id="payment-form">
+                        <h4>📸 Confirmation de Paiement</h4>
+                        <div class="form-group">
+                            <label for="payment-fullname">Votre nom complet</label>
+                            <input type="text" id="payment-fullname" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-whatsapp">Votre WhatsApp</label>
+                            <input type="tel" id="payment-whatsapp" required placeholder="Votre numéro">
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-amount">Montant payé</label>
+                            <input type="number" id="payment-amount" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-proof">Preuve de paiement</label>
+                            <input type="file" id="payment-proof" accept="image/*" required>
+                            <small>📷 Capture d'écran du transfert (max 2MB)</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-success btn-block hidden" id="confirm-payment">✅ Soumettre la preuve</button>
+                </div>
+                
+                <h3 class="section-title">Historique des Recharges</h3>
+                <div id="recharge-history"></div>
+            </section>
+
+            <!-- Creator Page -->
+            <section id="creator-page" class="hidden">
+                <h2 class="section-title">Espace Créator</h2>
+                
+                <div class="profile-card">
+                    <h3>⏳ Recharges en Attente</h3>
+                    <div class="table-responsive">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Utilisateur</th>
+                                    <th>Montant</th>
+                                    <th>Méthode</th>
+                                    <th>Date</th>
+                                    <th>Preuve</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pending-recharges-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="profile-card">
+                    <h3>👥 Utilisateurs</h3>
+                    <div class="table-responsive">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Inscription</th>
+                                    <th>Solde</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span id="notification-text">Opération réussie!</span>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="freefire-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎮 Free Fire - Diamants</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Quantité de diamants:</label>
+                    <div class="diamond-options">
+                        <div class="diamond-option" data-diamonds="110" data-price="165">110 💎 - 165 HTG</div>
+                        <div class="diamond-option" data-diamonds="330" data-price="495">330 💎 - 495 HTG</div>
+                        <div class="diamond-option" data-diamonds="550" data-price="825">550 💎 - 825 HTG</div>
+                        <div class="diamond-option" data-diamonds="1100" data-price="1650">1100 💎 - 1650 HTG</div>
+                        <div class="diamond-option" data-diamonds="2200" data-price="3300">2200 💎 - 3300 HTG</div>
+                        <div class="diamond-option" data-diamonds="5000" data-price="7500">5000 💎 - 7500 HTG</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="freefire-id">ID Free Fire</label>
+                    <input type="text" id="freefire-id" required placeholder="Votre ID">
+                </div>
+                <div class="form-group">
+                    <label for="freefire-name">Nom du compte</label>
+                    <input type="text" id="freefire-name" required placeholder="Votre nom de compte">
+                </div>
+                <div class="selected-option">
+                    <h4>📋 Récapitulatif</h4>
+                    <p id="selected-diamonds">Aucune option sélectionnée</p>
+                    <p id="selected-price">Prix: 0 HTG</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-freefire">Annuler</button>
+                <button class="btn btn-success" id="confirm-freefire">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="boost-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="boost-modal-title">🚀 Boost Service</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="boost-type">Type de service</label>
+                    <select id="boost-type" class="form-control">
+                        <option value="followers">Abonnés</option>
+                        <option value="likes">Likes</option>
+                        <option value="views">Vues</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="boost-quantity">Quantité</label>
+                    <select id="boost-quantity" class="form-control"></select>
+                </div>
+                <div class="form-group" id="username-field">
+                    <label for="boost-username">Nom d'utilisateur</label>
+                    <input type="text" id="boost-username" placeholder="@username">
+                </div>
+                <div class="form-group hidden" id="link-field">
+                    <label for="boost-link">Lien du post</label>
+                    <input type="text" id="boost-link" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="boost-email">Email</label>
+                    <input type="email" id="boost-email" required placeholder="Votre email">
+                </div>
+                <div class="selected-option">
+                    <h4>📋 Récapitulatif</h4>
+                    <p id="selected-boost">Aucune option sélectionnée</p>
+                    <p id="selected-boost-price">Prix: 0 HTG</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-boost">Annuler</button>
+                <button class="btn btn-success" id="confirm-boost">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="payment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💳 Paiement du Panier</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="moncash">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>Moncash</div>
+                    </div>
+                    <div class="payment-method" data-method="natcash">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>Natcash</div>
+                    </div>
+                </div>
+                
+                <div class="payment-info" id="cart-moncash-info" style="display: none;">
+                    <h4>💳 Paiement par Moncash</h4>
+                    <p><strong>📱 Numéro :</strong> +50939442808</p>
+                    <p><strong>👤 Nom :</strong> Bien Aimé Marcco</p>
+                    <p><strong>💵 Montant :</strong> <span id="cart-total-amount">0</span> HTG</p>
+                </div>
+                
+                <div class="payment-info" id="cart-natcash-info" style="display: none;">
+                    <h4>💳 Paiement par Natcash</h4>
+                    <p><strong>📱 Numéro :</strong> +50935669814</p>
+                    <p><strong>👤 Nom :</strong> Pierre Louis Jinolyse</p>
+                    <p><strong>💵 Montant :</strong> <span id="cart-total-amount-nat">0</span> HTG</p>
+                </div>
+                
+                <div class="payment-form hidden" id="cart-payment-form">
+                    <h4>📸 Confirmation de Paiement</h4>
+                    <div class="form-group">
+                        <label for="cart-payment-fullname">Votre nom complet</label>
+                        <input type="text" id="cart-payment-fullname" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="cart-payment-whatsapp">Votre WhatsApp</label>
+                        <input type="tel" id="cart-payment-whatsapp" required placeholder="Votre numéro">
+                    </div>
+                    <div class="form-group">
+                        <label for="cart-payment-amount">Montant payé</label>
+                        <input type="number" id="cart-payment-amount" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cart-payment-proof">Preuve de paiement</label>
+                        <input type="file" id="cart-payment-proof" accept="image/*" required>
+                        <small>📷 Capture d'écran du transfert (max 2MB)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-payment">Annuler</button>
+                <button class="btn btn-success hidden" id="confirm-cart-payment">✅ Soumettre la preuve</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
