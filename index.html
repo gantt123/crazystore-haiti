@@ -13,7 +13,7 @@
     <section id="auth-section" class="auth-container">
         <div class="auth-form">
             <div class="logo-header">
-                <i class="fas fa-store"></i>
+                <img src="images/store.png" alt="Crazy-Store Logo" class="site-logo">
                 <h1>Crazy-Store</h1>
             </div>
             <h2>Connexion</h2>
@@ -37,7 +37,7 @@
 
         <div class="auth-form hidden" id="register-form">
             <div class="logo-header">
-                <i class="fas fa-store"></i>
+                <img src="images/store.png" alt="Crazy-Store Logo" class="site-logo">
                 <h1>Crazy-Store</h1>
             </div>
             <h2>Créer un compte</h2>
@@ -75,7 +75,7 @@
         <header>
             <div class="container header-content">
                 <div class="logo">
-                    <i class="fas fa-store"></i>
+                    <img src="images/store.png" alt="Crazy-Store" class="site-logo">
                     <span>Crazy-Store</span>
                 </div>
                 
@@ -145,20 +145,24 @@
                 </div>
                 
                 <div class="services-grid" id="services-container">
-                    <!-- Services dynamiques -->
+                    <!-- Services dynamiques générés par main.js -->
                 </div>
             </section>
 
             <!-- Streaming Page -->
             <section id="streaming-page" class="hidden">
                 <h2 class="section-title">Services Streaming</h2>
-                <div class="services-grid" id="streaming-container"></div>
+                <div class="services-grid" id="streaming-container">
+                    <!-- Les services (Netflix, Prime Video, Disney+, etc.) sont injectés ici -->
+                </div>
             </section>
 
             <!-- Gaming Page -->
             <section id="gaming-page" class="hidden">
                 <h2 class="section-title">Services Gaming</h2>
-                <div class="services-grid" id="gaming-container"></div>
+                <div class="services-grid" id="gaming-container">
+                    <!-- Call of Duty & Fortnite supprimés -->
+                </div>
             </section>
 
             <!-- Boost Package Page -->
@@ -240,11 +244,11 @@
                     <h3>Méthodes de Paiement</h3>
                     <div class="payment-methods">
                         <div class="payment-method" data-method="moncash">
-                            <i class="fas fa-mobile-alt"></i>
+                            <img src="images/moncash.png" alt="Moncash" class="pay-logo">
                             <div>Moncash</div>
                         </div>
                         <div class="payment-method" data-method="natcash">
-                            <i class="fas fa-mobile-alt"></i>
+                            <img src="images/natcash.png" alt="Natcash" class="pay-logo">
                             <div>Natcash</div>
                         </div>
                     </div>
@@ -290,49 +294,6 @@
                 <h3 class="section-title">Historique des Recharges</h3>
                 <div id="recharge-history"></div>
             </section>
-
-            <!-- Creator Page -->
-            <section id="creator-page" class="hidden">
-                <h2 class="section-title">Espace Créator</h2>
-                
-                <div class="profile-card">
-                    <h3>⏳ Recharges en Attente</h3>
-                    <div class="table-responsive">
-                        <table class="users-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Utilisateur</th>
-                                    <th>Montant</th>
-                                    <th>Méthode</th>
-                                    <th>Date</th>
-                                    <th>Preuve</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pending-recharges-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <div class="profile-card">
-                    <h3>👥 Utilisateurs</h3>
-                    <div class="table-responsive">
-                        <table class="users-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nom</th>
-                                    <th>Email</th>
-                                    <th>Inscription</th>
-                                    <th>Solde</th>
-                                </tr>
-                            </thead>
-                            <tbody id="users-table-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
         </main>
 
         <div class="theme-toggle">
@@ -342,150 +303,6 @@
         <div class="notification" id="notification">
             <i class="fas fa-check-circle"></i>
             <span id="notification-text">Opération réussie!</span>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    <div class="modal hidden" id="freefire-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>🎮 Free Fire - Diamants</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Quantité de diamants:</label>
-                    <div class="diamond-options">
-                        <div class="diamond-option" data-diamonds="110" data-price="165">110 💎 - 165 HTG</div>
-                        <div class="diamond-option" data-diamonds="330" data-price="495">330 💎 - 495 HTG</div>
-                        <div class="diamond-option" data-diamonds="550" data-price="825">550 💎 - 825 HTG</div>
-                        <div class="diamond-option" data-diamonds="1100" data-price="1650">1100 💎 - 1650 HTG</div>
-                        <div class="diamond-option" data-diamonds="2200" data-price="3300">2200 💎 - 3300 HTG</div>
-                        <div class="diamond-option" data-diamonds="5000" data-price="7500">5000 💎 - 7500 HTG</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="freefire-id">ID Free Fire</label>
-                    <input type="text" id="freefire-id" required placeholder="Votre ID">
-                </div>
-                <div class="form-group">
-                    <label for="freefire-name">Nom du compte</label>
-                    <input type="text" id="freefire-name" required placeholder="Votre nom de compte">
-                </div>
-                <div class="selected-option">
-                    <h4>📋 Récapitulatif</h4>
-                    <p id="selected-diamonds">Aucune option sélectionnée</p>
-                    <p id="selected-price">Prix: 0 HTG</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancel-freefire">Annuler</button>
-                <button class="btn btn-success" id="confirm-freefire">Ajouter au panier</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal hidden" id="boost-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="boost-modal-title">🚀 Boost Service</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="boost-type">Type de service</label>
-                    <select id="boost-type" class="form-control">
-                        <option value="followers">Abonnés</option>
-                        <option value="likes">Likes</option>
-                        <option value="views">Vues</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="boost-quantity">Quantité</label>
-                    <select id="boost-quantity" class="form-control"></select>
-                </div>
-                <div class="form-group" id="username-field">
-                    <label for="boost-username">Nom d'utilisateur</label>
-                    <input type="text" id="boost-username" placeholder="@username">
-                </div>
-                <div class="form-group hidden" id="link-field">
-                    <label for="boost-link">Lien du post</label>
-                    <input type="text" id="boost-link" placeholder="https://...">
-                </div>
-                <div class="form-group">
-                    <label for="boost-email">Email</label>
-                    <input type="email" id="boost-email" required placeholder="Votre email">
-                </div>
-                <div class="selected-option">
-                    <h4>📋 Récapitulatif</h4>
-                    <p id="selected-boost">Aucune option sélectionnée</p>
-                    <p id="selected-boost-price">Prix: 0 HTG</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancel-boost">Annuler</button>
-                <button class="btn btn-success" id="confirm-boost">Ajouter au panier</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal hidden" id="payment-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>💳 Paiement du Panier</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="payment-methods">
-                    <div class="payment-method" data-method="moncash">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div>Moncash</div>
-                    </div>
-                    <div class="payment-method" data-method="natcash">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div>Natcash</div>
-                    </div>
-                </div>
-                
-                <div class="payment-info" id="cart-moncash-info" style="display: none;">
-                    <h4>💳 Paiement par Moncash</h4>
-                    <p><strong>📱 Numéro :</strong> +50939442808</p>
-                    <p><strong>👤 Nom :</strong> Bien Aimé Marcco</p>
-                    <p><strong>💵 Montant :</strong> <span id="cart-total-amount">0</span> HTG</p>
-                </div>
-                
-                <div class="payment-info" id="cart-natcash-info" style="display: none;">
-                    <h4>💳 Paiement par Natcash</h4>
-                    <p><strong>📱 Numéro :</strong> +50935669814</p>
-                    <p><strong>👤 Nom :</strong> Pierre Louis Jinolyse</p>
-                    <p><strong>💵 Montant :</strong> <span id="cart-total-amount-nat">0</span> HTG</p>
-                </div>
-                
-                <div class="payment-form hidden" id="cart-payment-form">
-                    <h4>📸 Confirmation de Paiement</h4>
-                    <div class="form-group">
-                        <label for="cart-payment-fullname">Votre nom complet</label>
-                        <input type="text" id="cart-payment-fullname" required placeholder="Votre nom">
-                    </div>
-                    <div class="form-group">
-                        <label for="cart-payment-whatsapp">Votre WhatsApp</label>
-                        <input type="tel" id="cart-payment-whatsapp" required placeholder="Votre numéro">
-                    </div>
-                    <div class="form-group">
-                        <label for="cart-payment-amount">Montant payé</label>
-                        <input type="number" id="cart-payment-amount" required readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="cart-payment-proof">Preuve de paiement</label>
-                        <input type="file" id="cart-payment-proof" accept="image/*" required>
-                        <small>📷 Capture d'écran du transfert (max 2MB)</small>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancel-payment">Annuler</button>
-                <button class="btn btn-success hidden" id="confirm-cart-payment">✅ Soumettre la preuve</button>
-            </div>
         </div>
     </div>
 
